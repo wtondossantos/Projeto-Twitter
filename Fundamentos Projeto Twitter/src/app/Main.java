@@ -1,7 +1,6 @@
 package app;
 
-import java.awt.List;
-import java.util.ArrayList;
+import java.util.List;
 
 import twitter.TwitterDef;
 import twitter4j.Query;
@@ -15,16 +14,17 @@ public class Main {
 		TwitterDef t = new TwitterDef();
 								
 		try {
-			
-			Query query = new Query("java");
+
+			Query query = new Query("#javaone");
 			query.setSince("2016-05-08");
 			query.setUntil("2016-05-14");
 			QueryResult result = null;			
 			
 			result = t.getTweet().search(query);
 			//query = result.nextQuery();
-			
-			System.out.println("" + result.getCount());
+			System.out.println(result.getCount());
+			  
+			result.getTweets().forEach(p -> System.out.println(p.getText() + "\n"));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
